@@ -1,4 +1,4 @@
-package com.android.hikadashi.dto.anime
+package com.android.hikadashi.dto.season
 
 
 import com.squareup.moshi.Json

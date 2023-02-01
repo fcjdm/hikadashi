@@ -66,14 +66,14 @@
         app:cardElevation="8dp">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonFY"
             android:layout_width="96dp"
             android:layout_height="match_parent"
             android:text="For you"
             android:textSize="10sp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonAiring"
             android:layout_width="96dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="100dp"
@@ -81,7 +81,7 @@
             android:textSize="10sp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonUpcoming"
             android:layout_width="96dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="200dp"
@@ -89,7 +89,7 @@
             android:textSize="10sp" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/buttonMostP"
             android:layout_width="96dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="300dp"

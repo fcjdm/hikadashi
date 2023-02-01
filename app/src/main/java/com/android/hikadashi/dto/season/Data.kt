@@ -1,4 +1,4 @@
-package com.android.hikadashi.dto.anime
+package com.android.hikadashi.dto.season
 
 
 import com.squareup.moshi.Json
@@ -10,75 +10,75 @@ import android.os.Parcelable
 @Parcelize
 data class Data(
     @Json(name = "aired")
-    val aired: Aired,
+    val aired: Aired?=null,
     @Json(name = "airing")
-    val airing: Boolean,
+    val airing: Boolean?=null,
     @Json(name = "approved")
-    val approved: Boolean,
+    val approved: Boolean?=null,
     @Json(name = "background")
-    val background: String,
+    val background: String?=null,
     @Json(name = "broadcast")
-    val broadcast: Broadcast,
+    val broadcast: Broadcast?=null,
     @Json(name = "demographics")
-    val demographics: List<Demographic>,
+    val demographics: List<Demographic>?=null,
     @Json(name = "duration")
-    val duration: String,
+    val duration: String?=null,
     @Json(name = "episodes")
-    val episodes: Int,
+    val episodes: Int?=null,
     @Json(name = "explicit_genres")
-    val explicitGenres: List<ExplicitGenre>,
+    val explicitGenres: List<ExplicitGenre>?=null,
     @Json(name = "favorites")
-    val favorites: Int,
+    val favorites: Int?=null,
     @Json(name = "genres")
-    val genres: List<Genre>,
+    val genres: List<Genre>?=null,
     @Json(name = "images")
-    val images: Images,
+    val images: Images?=null,
     @Json(name = "licensors")
-    val licensors: List<Licensor>,
+    val licensors: List<Licensor>?=null,
     @Json(name = "mal_id")
-    val malId: Int,
+    val malId: String,
     @Json(name = "members")
-    val members: Int,
+    val members: Int?=null,
     @Json(name = "popularity")
-    val popularity: Int,
+    val popularity: Int?=null,
     @Json(name = "producers")
-    val producers: List<Producer>,
+    val producers: List<Producer>?=null,
     @Json(name = "rank")
-    val rank: Int,
+    val rank: Int?=null,
     @Json(name = "rating")
-    val rating: String,
+    val rating: String?=null,
     @Json(name = "score")
-    val score: Int,
+    val score: Float?=null,
     @Json(name = "scored_by")
-    val scoredBy: Int,
+    val scoredBy: Int?=null,
     @Json(name = "season")
-    val season: String,
+    val season: String?=null,
     @Json(name = "source")
-    val source: String,
+    val source: String?=null,
     @Json(name = "status")
-    val status: String,
+    val status: String?=null,
     @Json(name = "studios")
-    val studios: List<Studio>,
+    val studios: List<Studio>?=null,
     @Json(name = "synopsis")
-    val synopsis: String,
+    val synopsis: String?=null,
     @Json(name = "themes")
-    val themes: List<Theme>,
+    val themes: List<Theme>?=null,
     @Json(name = "title")
-    val title: String,
+    val title: String?=null,
     @Json(name = "title_english")
-    val titleEnglish: String,
+    val titleEnglish: String?=null,
     @Json(name = "title_japanese")
-    val titleJapanese: String,
+    val titleJapanese: String?=null,
     @Json(name = "title_synonyms")
-    val titleSynonyms: List<String>,
+    val titleSynonyms: List<String>?=null,
     @Json(name = "titles")
-    val titles: List<Title>,
+    val titles: List<Title>?=null,
     @Json(name = "trailer")
-    val trailer: Trailer,
+    val trailer: Trailer?=null,
     @Json(name = "type")
-    val type: String,
+    val type: String?=null,
     @Json(name = "url")
-    val url: String,
+    val url: String?=null,
     @Json(name = "year")
-    val year: Int
+    val year: Int?=null
 ) : Parcelable

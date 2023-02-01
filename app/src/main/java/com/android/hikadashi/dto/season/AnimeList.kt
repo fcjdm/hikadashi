@@ -1,4 +1,4 @@
-package com.android.hikadashi.dto.anime
+package com.android.hikadashi.dto.season
 
 
 import com.squareup.moshi.Json
@@ -8,11 +8,9 @@ import android.os.Parcelable
 
 @JsonClass(generateAdapter = true)
 @Parcelize
-data class From(
-    @Json(name = "day")
-    val day: Int,
-    @Json(name = "month")
-    val month: Int,
-    @Json(name = "year")
-    val year: Int
+data class AnimeList(
+    @Json(name = "data")
+    val `data`: List<Data>,
+    @Json(name = "pagination")
+    val pagination: Pagination
 ) : Parcelable

@@ -1,7 +1,9 @@
 package com.android.hikadashi.ui.api
 
+import android.widget.Button
 import androidx.lifecycle.*
-import com.android.hikadashi.dto.anime.Anime
+import com.android.hikadashi.dto.season.AnimeList
+import com.android.hikadashi.dto.season.Data
 import com.android.hikadashi.model.server.JikanClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -11,17 +13,30 @@ class ApiViewModel() : ViewModel() {
     val state: LiveData<UiState> get() = _state
 
 
+
     init {
         viewModelScope.launch(Dispatchers.Main){
             _state.value = _state.value?.copy(loading = true)
-            val getTopAnimes = JikanClient.service.getTopAnimes()
+            val getTopAnimes = JikanClient.service.getRecommendAnimes().data
             _state.value = _state.value?.copy(animes = getTopAnimes)
             _state.value = _state.value?.copy(loading = false)
 
         }
     }
 
-    fun navigateTo(anime: Anime) {
+    fun changeList(text: String){
+        viewModelScope.launch(Dispatchers.Main) {
+            when (text) {
+                "foryou" -> _state.value = _state.value?.copy(animes = JikanClient.service.getRecommendAnimes().data)
+                "airing" -> _state.value = _state.value?.copy(animes = JikanClient.service.getAiringAnime().data)
+                "upcoming" ->_state.value = _state.value?.copy(animes = JikanClient.service.getUpcomingAnime().data)
+                "mostpopular" ->_state.value = _state.value?.copy(animes = JikanClient.service.getTopAnimes().data)
+
+            }
+        }
+    }
+
+    fun navigateTo(anime: Data) {
         _state.value = _state.value?.copy(navigateTo = anime)
     }
 
@@ -31,8 +46,8 @@ class ApiViewModel() : ViewModel() {
 
     data class UiState(
         val loading: Boolean = false,
-        val animes: List<Anime> = emptyList(),
-        val navigateTo: Anime? = null
+        val animes: List<Data> = emptyList(),
+        val navigateTo: Data? = null
     )
 }
 @Suppress("UNCHECKED_CAST")

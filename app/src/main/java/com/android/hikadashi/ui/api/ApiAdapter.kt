@@ -5,20 +5,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.hikadashi.R
 import com.android.hikadashi.databinding.ViewApiBinding
-import com.android.hikadashi.dto.anime.Anime
+import com.android.hikadashi.dto.season.Data
 import inflate
 import loadUrl
 
 class ApiAdapter (
-    var animeList : List<Anime>,
-    val listener: (Anime) -> Unit
+    var animeList : List<Data>,
+    val listener: (Data) -> Unit
     ): RecyclerView.Adapter<ApiAdapter.ViewHolder>(){
 
         class ViewHolder(view: View): RecyclerView.ViewHolder(view){
             val binding = ViewApiBinding.bind(view)
-            fun bind(anime: Anime){
-                binding.animeTitle.text = anime.data.title
-                binding.animeImage.loadUrl(anime.data.images.jpg.imageUrl)
+            fun bind(anime: Data){
+                binding.animeTitle.text = anime.title
+                anime.images?.jpg?.let { binding.animeImage.loadUrl(it.imageUrl) }
+                binding.animeScore.text = anime.score.toString()
+                binding.animeDesc.text = anime.synopsis
             }
         }
 

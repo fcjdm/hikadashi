@@ -1,4 +1,4 @@
-package com.android.hikadashi.dto.anime
+package com.android.hikadashi.dto.season
 
 
 import com.squareup.moshi.Json
@@ -8,13 +8,9 @@ import android.os.Parcelable
 
 @JsonClass(generateAdapter = true)
 @Parcelize
-data class Genre(
-    @Json(name = "mal_id")
-    val malId: Int,
-    @Json(name = "name")
-    val name: String,
+data class Title(
+    @Json(name = "title")
+    val title: String,
     @Json(name = "type")
-    val type: String,
-    @Json(name = "url")
-    val url: String
+    val type: String
 ) : Parcelable
