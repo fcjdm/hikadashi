@@ -1,4 +1,4 @@
-package com.android.hikadashi.dto.season
+package com.android.hikadashi.dto
 
 
 import com.squareup.moshi.Json
@@ -8,9 +8,9 @@ import android.os.Parcelable
 
 @JsonClass(generateAdapter = true)
 @Parcelize
-data class Title(
-    @Json(name = "title")
-    val title: String,
-    @Json(name = "type")
-    val type: String
+data class Images(
+    @Json(name = "jpg")
+    val jpg: Jpg,
+    @Json(name = "webp")
+    val webp: Webp
 ) : Parcelable

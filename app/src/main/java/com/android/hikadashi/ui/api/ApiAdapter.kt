@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.hikadashi.R
 import com.android.hikadashi.databinding.ViewApiBinding
-import com.android.hikadashi.dto.season.Data
+import com.android.hikadashi.dto.Data
 import inflate
 import loadUrl
 

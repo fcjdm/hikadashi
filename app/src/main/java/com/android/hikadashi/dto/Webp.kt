@@ -1,4 +1,4 @@
-package com.android.hikadashi.dto.season
+package com.android.hikadashi.dto
 
 
 import com.squareup.moshi.Json
@@ -8,7 +8,7 @@ import android.os.Parcelable
 
 @JsonClass(generateAdapter = true)
 @Parcelize
-data class Jpg(
+data class Webp(
     @Json(name = "image_url")
     val imageUrl: String,
     @Json(name = "large_image_url")

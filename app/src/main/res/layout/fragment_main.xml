@@ -47,7 +47,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerApi"
         android:requiresFadingEdge="vertical"
-        android:fadingEdgeLength="150dp"
+        android:fadingEdgeLength="100dp"
         android:layout_marginTop="150dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -56,6 +56,15 @@
         tools:listitem="@layout/view_api">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/white" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="389dp"
@@ -70,7 +79,9 @@
             android:layout_width="96dp"
             android:layout_height="match_parent"
             android:text="For you"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
 
         <Button
             android:id="@+id/buttonAiring"
@@ -78,7 +89,9 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="100dp"
             android:text="Airing"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
 
         <Button
             android:id="@+id/buttonUpcoming"
@@ -86,7 +99,9 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="200dp"
             android:text="Upcoming"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
 
         <Button
             android:id="@+id/buttonMostP"
@@ -94,7 +109,9 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="300dp"
             android:text="Most Popular"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
     </androidx.cardview.widget.CardView>
 
 </FrameLayout>

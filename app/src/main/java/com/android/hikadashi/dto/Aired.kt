@@ -1,4 +1,4 @@
-package com.android.hikadashi.dto.season
+package com.android.hikadashi.dto
 
 
 import com.squareup.moshi.Json
@@ -8,11 +8,11 @@ import android.os.Parcelable
 
 @JsonClass(generateAdapter = true)
 @Parcelize
-data class Prop(
+data class Aired(
     @Json(name = "from")
-    val from: From,
-    /*@Json(name = "string")
-    val string: String,*/
+    val from: String,
+    @Json(name = "prop")
+    val prop: Prop,
     @Json(name = "to")
-    val to: To
+    val to: String
 ) : Parcelable

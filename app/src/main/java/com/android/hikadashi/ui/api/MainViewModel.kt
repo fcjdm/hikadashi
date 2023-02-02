@@ -1,9 +1,7 @@
 package com.android.hikadashi.ui.api
 
-import android.widget.Button
 import androidx.lifecycle.*
-import com.android.hikadashi.dto.season.AnimeList
-import com.android.hikadashi.dto.season.Data
+import com.android.hikadashi.dto.Data
 import com.android.hikadashi.model.server.JikanClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,7 +15,7 @@ class ApiViewModel() : ViewModel() {
     init {
         viewModelScope.launch(Dispatchers.Main){
             _state.value = _state.value?.copy(loading = true)
-            val getTopAnimes = JikanClient.service.getRecommendAnimes().data
+            val getTopAnimes = JikanClient.service.getAiringAnime().data
             _state.value = _state.value?.copy(animes = getTopAnimes)
             _state.value = _state.value?.copy(loading = false)
 

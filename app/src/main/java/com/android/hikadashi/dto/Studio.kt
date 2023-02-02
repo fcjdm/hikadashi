@@ -1,4 +1,4 @@
-package com.android.hikadashi.dto.season
+package com.android.hikadashi.dto
 
 
 import com.squareup.moshi.Json
@@ -8,7 +8,7 @@ import android.os.Parcelable
 
 @JsonClass(generateAdapter = true)
 @Parcelize
-data class ExplicitGenre(
+data class Studio(
     @Json(name = "mal_id")
     val malId: Int,
     @Json(name = "name")

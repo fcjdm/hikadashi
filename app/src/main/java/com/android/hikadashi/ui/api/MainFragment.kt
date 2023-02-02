@@ -1,13 +1,17 @@
 package com.android.hikadashi.ui.api
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.activity.viewModels
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.android.hikadashi.R
 import com.android.hikadashi.databinding.FragmentMainBinding
+import com.android.hikadashi.ui.detail.DetailFragment
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     private val adapter = ApiAdapter(emptyList()) { anime -> viewModel.navigateTo(anime) }
@@ -24,37 +28,56 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             val airing: Button = buttonAiring
             val upcoming: Button = buttonUpcoming
             val mostPopular: Button = buttonMostP
+            airing.setTextColor(Color.parseColor("#7fcae6"))
 
 
 
             viewModel.state.observe(viewLifecycleOwner) { state ->
-                //progress.visibility = if(state.loading) View.VISIBLE else View.GONE
+                progress.visibility = if(state.loading) View.VISIBLE else View.GONE
                 adapter.animeList = state.animes
+
                 adapter.notifyDataSetChanged()
 
                 forYou.setOnClickListener{
+                    forYou.setTextColor(Color.parseColor("#7fcae6"))
+                    airing.setTextColor(Color.parseColor("#000000"))
+                    upcoming.setTextColor(Color.parseColor("#000000"))
+                    mostPopular.setTextColor(Color.parseColor("#000000"))
                     viewModel.changeList("foryou")
+
                 }
 
                 airing.setOnClickListener{
+                    forYou.setTextColor(Color.parseColor("#000000"))
+                    airing.setTextColor(Color.parseColor("#7fcae6"))
+                    upcoming.setTextColor(Color.parseColor("#000000"))
+                    mostPopular.setTextColor(Color.parseColor("#000000"))
                     viewModel.changeList("airing")
                 }
 
                 upcoming.setOnClickListener{
+                    forYou.setTextColor(Color.parseColor("#000000"))
+                    airing.setTextColor(Color.parseColor("#000000"))
+                    upcoming.setTextColor(Color.parseColor("#7fcae6"))
+                    mostPopular.setTextColor(Color.parseColor("#000000"))
                     viewModel.changeList("upcoming")
                 }
 
                 mostPopular.setOnClickListener{
+                    forYou.setTextColor(Color.parseColor("#000000"))
+                    airing.setTextColor(Color.parseColor("#000000"))
+                    upcoming.setTextColor(Color.parseColor("#000000"))
+                    mostPopular.setTextColor(Color.parseColor("#7fcae6"))
                     viewModel.changeList("mostpopular")
                 }
 
-                /*state.navigateTo?.let {
+                state.navigateTo?.let {
                     findNavController().navigate(
-                        R.id.action_mainFragment_to_leagueFragment2,
-                        bundleOf(LeagueFragment.EXTRA_GAME to it)
+                        R.id.action_apiFragment_to_detailFragment,
+                        bundleOf(DetailFragment.EXTRA_ANIME to it)
                     )
                     viewModel.onNavigateDone()
-                }*/
+                }
             }
 
         }

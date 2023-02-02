@@ -1,6 +1,6 @@
 package com.android.hikadashi.model.server
 
-import com.android.hikadashi.dto.season.AnimeList
+import com.android.hikadashi.dto.AnimeList
 import retrofit2.http.GET
 interface JikanService {
 
