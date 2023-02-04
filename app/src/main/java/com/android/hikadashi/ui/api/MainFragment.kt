@@ -1,10 +1,11 @@
 package com.android.hikadashi.ui.api
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import androidx.activity.viewModels
+import android.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -28,6 +29,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             val airing: Button = buttonAiring
             val upcoming: Button = buttonUpcoming
             val mostPopular: Button = buttonMostP
+            val searchView: SearchView = searchAnime
             airing.setTextColor(Color.parseColor("#7fcae6"))
 
 
@@ -70,6 +72,22 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                     mostPopular.setTextColor(Color.parseColor("#7fcae6"))
                     viewModel.changeList("mostpopular")
                 }
+
+                searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+                    override fun onQueryTextSubmit(p0: String): Boolean {
+                        forYou.setTextColor(Color.parseColor("#000000"))
+                        airing.setTextColor(Color.parseColor("#000000"))
+                        upcoming.setTextColor(Color.parseColor("#000000"))
+                        mostPopular.setTextColor(Color.parseColor("#000000"))
+                        viewModel.search(p0)
+                        return true
+                    }
+
+                    override fun onQueryTextChange(p0: String?): Boolean {
+                        return false
+                    }
+
+                })
 
                 state.navigateTo?.let {
                     findNavController().navigate(

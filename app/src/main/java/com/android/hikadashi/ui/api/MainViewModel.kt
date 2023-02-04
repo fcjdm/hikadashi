@@ -34,6 +34,13 @@ class ApiViewModel() : ViewModel() {
         }
     }
 
+    fun search(name: String){
+        viewModelScope.launch(Dispatchers.Main) {
+            _state.value =
+                _state.value?.copy(animes = JikanClient.service.getSearchAnime(name).data)
+        }
+    }
+
     fun navigateTo(anime: Data) {
         _state.value = _state.value?.copy(navigateTo = anime)
     }
