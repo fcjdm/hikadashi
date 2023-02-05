@@ -19,7 +19,8 @@ interface JikanService {
     suspend fun getAiringAnime(): AnimeList
 
     @GET("anime")
-    suspend fun getSearchAnime(@Query("q")name: String): AnimeList
+    suspend fun getSearchAnime(@Query("q")name: String,
+        @Query("sfw")sfw: Boolean): AnimeList
 
 
 

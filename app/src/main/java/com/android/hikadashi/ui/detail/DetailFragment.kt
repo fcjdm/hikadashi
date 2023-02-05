@@ -1,6 +1,8 @@
 package com.android.hikadashi.ui.detail
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.TypedValue
@@ -8,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.viewModels
 import com.android.hikadashi.R
 import com.android.hikadashi.databinding.FragmentDetailBinding
@@ -25,6 +28,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentDetailBinding.bind(view).apply {
+            val buttonExt: Button = buttonExt
 
             viewModel.state.observe(viewLifecycleOwner) { state ->
                 state.anime.images?.jpg?.let { detailImage.loadUrl(it.largeImageUrl) }
@@ -52,9 +56,15 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 }
                 detailDesc.movementMethod = ScrollingMovementMethod()
                 detailDesc.text = state.anime.synopsis
-
-
                 detailRating.text = state.anime.rating
+
+                buttonExt.setOnClickListener{
+                    val urlIntent = Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(state.anime.url)
+                    )
+                    startActivity(urlIntent)
+                }
 
             }
         }

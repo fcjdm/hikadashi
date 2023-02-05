@@ -1,5 +1,6 @@
 package com.android.hikadashi.ui.api
 
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -19,8 +20,16 @@ class ApiAdapter (
             fun bind(anime: Data){
                 binding.animeTitle.text = anime.title
                 anime.images?.jpg?.let { binding.animeImage.loadUrl(it.imageUrl) }
-                binding.animeScore.text = anime.score.toString()
                 binding.animeDesc.text = anime.synopsis
+
+                if(anime.status == "Currently Airing"){
+                    binding.animeScore.text = anime.score.toString()
+                }else if(anime.status == "Not yet aired" ){
+                    binding.animeScore.text = "Not rated yet"
+
+                } else{
+                    binding.animeScore.text = anime.score.toString()
+                }
             }
         }
 

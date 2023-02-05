@@ -37,7 +37,7 @@ class ApiViewModel() : ViewModel() {
     fun search(name: String){
         viewModelScope.launch(Dispatchers.Main) {
             _state.value =
-                _state.value?.copy(animes = JikanClient.service.getSearchAnime(name).data)
+                _state.value?.copy(animes = JikanClient.service.getSearchAnime(name, true).data)
         }
     }
 
