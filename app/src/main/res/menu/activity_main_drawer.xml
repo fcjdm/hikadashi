@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:title="My list">
+
+        <item android:id="@+id/nav_item_watching"
+            android:title="Watching"/>
+        <item android:id="@+id/nav_item_plan_to_watch"
+            android:title="Plan to Watch"/>
+        <item android:id="@+id/nav_item_on_hold"
+            android:title="On Hold"/>
+        <item android:id="@+id/nav_item_dropped"
+            android:title="Dropped"/>
+    </group>
+
+    <item android:id="@+id/nav_item_discover"
+        android:title="Discover"/>
+
+</menu>
