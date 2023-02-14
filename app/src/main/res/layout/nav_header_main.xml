@@ -4,7 +4,7 @@
     android:id="@+id/nav_header"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@color/white"
+    android:background="?attr/colorPrimary"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackgroundBorderless"
@@ -20,7 +20,7 @@
         android:layout_marginBottom="50dp"
         android:text="HIKADASHI"
         android:textAlignment="center"
-        android:textColor="@color/bg_color"
+        android:textColor="@color/white"
         android:textSize="34sp"
         android:textStyle="bold" />
 
@@ -28,7 +28,8 @@
         android:id="@+id/userText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:text="USER EMAIL"
-        android:textColor="@color/bg_color"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 </LinearLayout>

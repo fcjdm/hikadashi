@@ -1,6 +1,5 @@
 package com.android.hikadashi.ui.api
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -15,7 +14,7 @@ import com.android.hikadashi.databinding.FragmentMainBinding
 import com.android.hikadashi.ui.detail.DetailFragment
 
 class MainFragment : Fragment(R.layout.fragment_main) {
-    private val adapter = ApiAdapter(emptyList()) { anime -> viewModel.navigateTo(anime) }
+    private val adapter = Adapter(emptyList()) { anime -> viewModel.navigateTo(anime) }
 
     private val viewModel: ApiViewModel by viewModels { ApiViewModelFactory() }
 
@@ -31,8 +30,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             val mostPopular: Button = buttonMostP
             val searchView: SearchView = searchAnime
             airing.setTextColor(Color.parseColor("#7fcae6"))
-
-
 
             viewModel.state.observe(viewLifecycleOwner) { state ->
                 progress.visibility = if(state.loading) View.VISIBLE else View.GONE

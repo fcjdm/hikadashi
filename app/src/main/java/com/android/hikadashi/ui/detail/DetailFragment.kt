@@ -10,10 +10,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.android.hikadashi.R
 import com.android.hikadashi.databinding.FragmentDetailBinding
+import com.android.hikadashi.model.db.DbFirestore
 import loadUrl
 
 class DetailFragment : Fragment(R.layout.fragment_detail) {
@@ -31,6 +34,8 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             val buttonExt: Button = buttonExt
 
             viewModel.state.observe(viewLifecycleOwner) { state ->
+
+
                 state.anime.images?.jpg?.let { detailImage.loadUrl(it.largeImageUrl) }
                 detailName.text = state.anime.titleEnglish
 
@@ -65,6 +70,38 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                     )
                     startActivity(urlIntent)
                 }
+
+                addButton.setOnClickListener{
+                    viewModel.addAnime()
+                }
+
+                //Menu dropdown para cambiar entre los distintos estados de visualizacion
+                val dropDownStatus = resources.getStringArray(R.array.status)
+                val arrayAdapter = ArrayAdapter(this@DetailFragment.requireActivity(), R.layout.dropdown_item,dropDownStatus)
+                autoComplete.setAdapter(arrayAdapter)
+                autoComplete.setOnItemClickListener { parent, view, position, id ->
+                    var selectedStatus = parent.getItemAtPosition(position) as String
+                }
+
+                if(state.loading){
+                    progressStatus.visibility = View.VISIBLE
+                }else{
+                    progressStatus.visibility = View.GONE
+                    if(state.status == "notInList"){
+                        dropDownMenu.visibility = View.GONE
+                        addButton.visibility = View.VISIBLE
+                    }else{
+                        addButton.visibility = View.GONE
+                        dropDownMenu.visibility = View.VISIBLE
+
+                    }
+
+
+                }
+
+
+
+
 
             }
         }

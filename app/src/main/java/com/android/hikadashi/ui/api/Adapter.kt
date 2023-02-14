@@ -1,6 +1,5 @@
 package com.android.hikadashi.ui.api
 
-import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,10 +9,10 @@ import com.android.hikadashi.dto.Data
 import inflate
 import loadUrl
 
-class ApiAdapter (
+class Adapter (
     var animeList : List<Data>,
     val listener: (Data) -> Unit
-    ): RecyclerView.Adapter<ApiAdapter.ViewHolder>(){
+    ): RecyclerView.Adapter<Adapter.ViewHolder>(){
 
         class ViewHolder(view: View): RecyclerView.ViewHolder(view){
             val binding = ViewApiBinding.bind(view)

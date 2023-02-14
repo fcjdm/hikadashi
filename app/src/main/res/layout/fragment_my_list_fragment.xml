@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HostActivity"
+    android:background="?attr/colorPrimaryVariant">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="?attr/colorPrimary">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="138dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:text="Hikadashi"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMyList"
+        android:requiresFadingEdge="vertical"
+        android:fadingEdgeLength="100dp"
+        android:layout_marginTop="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/view_api">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/white" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="389dp"
+        android:layout_height="43dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="15dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp">
+
+        <Button
+            android:id="@+id/buttonWatching"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:text="Watching"
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
+
+        <Button
+            android:id="@+id/buttonPlanToWatch"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="100dp"
+            android:text="Plan to Watch"
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
+
+        <Button
+            android:id="@+id/buttonOnHold"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="200dp"
+            android:text="On Hold"
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
+
+        <Button
+            android:id="@+id/buttonDropped"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="300dp"
+            android:text="Dropped"
+            android:textSize="10sp"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

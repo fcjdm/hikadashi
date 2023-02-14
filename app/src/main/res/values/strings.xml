@@ -2,5 +2,13 @@
     <string name="app_name">hikadashi</string>
     <string name="navigation_Drawer_open">Open</string>
     <string name="navigation_Drawer_close">Close</string>
-    
+
+    <string-array name="status">
+        <item>WATCHING</item>
+        <item>PLAN TO WATCH</item>
+        <item>ON HOLD</item>
+        <item>DROPPED</item>
+
+    </string-array>
+
 </resources>

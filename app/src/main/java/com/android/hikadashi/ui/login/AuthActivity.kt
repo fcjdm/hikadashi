@@ -45,10 +45,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun login(email: String){
-        val homeIntent: Intent = Intent(this, HostActivity::class.java).apply {
-           putExtra("email", email)
-        }
-        startActivity(homeIntent)
+        startActivity(Intent(this, HostActivity::class.java))
     }
 
     private fun errorAlert(message: String){
