@@ -72,7 +72,11 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 }
 
                 addButton.setOnClickListener{
-                    viewModel.addAnime()
+                    viewModel.addAnime("WATCHING")
+                }
+
+                deleteButton.setOnClickListener{
+                    viewModel.deleteAnime()
                 }
 
                 //Menu dropdown para cambiar entre los distintos estados de visualizacion
@@ -81,18 +85,24 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 autoComplete.setAdapter(arrayAdapter)
                 autoComplete.setOnItemClickListener { parent, view, position, id ->
                     var selectedStatus = parent.getItemAtPosition(position) as String
+                    viewModel.addAnime(selectedStatus)
                 }
 
                 if(state.loading){
                     progressStatus.visibility = View.VISIBLE
+                    dropDownMenu.visibility = View.GONE
+                    addButton.visibility = View.GONE
+                    deleteButton.visibility = View.GONE
                 }else{
                     progressStatus.visibility = View.GONE
                     if(state.status == "notInList"){
                         dropDownMenu.visibility = View.GONE
                         addButton.visibility = View.VISIBLE
+                        deleteButton.visibility = View.GONE
                     }else{
                         addButton.visibility = View.GONE
                         dropDownMenu.visibility = View.VISIBLE
+                        deleteButton.visibility = View.VISIBLE
 
                     }
 

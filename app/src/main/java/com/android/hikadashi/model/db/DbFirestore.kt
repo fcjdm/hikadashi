@@ -1,9 +1,11 @@
 package com.android.hikadashi.model.db
 
+import android.os.Handler
 import com.android.hikadashi.dto.Data
 import com.android.hikadashi.model.server.JikanClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.tasks.await
 
 object DbFirestore {
@@ -11,15 +13,21 @@ object DbFirestore {
     const val COLLECTION_ANIMES = "animes"
     val email = FirebaseAuth.getInstance().currentUser?.email.toString()
 
-    suspend fun getByStatus(status: String): List<Data> {
-        val snapshot = FirebaseFirestore.getInstance().collection(email)
+    suspend fun getByStatus(status: String): MutableList<Data> {
+        val snapshot = FirebaseFirestore.getInstance().collection(COLLECTION_USERS)
+            .document(email)
+            .collection(COLLECTION_ANIMES)
             .whereEqualTo("status", status)
             .get()
             .await()
         val animes = mutableListOf<Data>()
+
         for (documentSnapshot in snapshot){
-            val anime = JikanClient.service.getAnimeFullById(documentSnapshot.get("id") as String)
+            val anime = JikanClient.service.getAnimeFullById(documentSnapshot.get("id") as String).data
             animes.add(anime)
+
+            //Delay necesario porque la api solo permite 3 llamadas por segundo
+            delay(334)
         }
         return animes
     }
@@ -54,16 +62,10 @@ object DbFirestore {
 
     fun deleteAnime(id: String) {
         FirebaseFirestore.getInstance().collection(COLLECTION_USERS)
-            .whereEqualTo("id", id)
-            .get()
-            .addOnCompleteListener {
-                if (it.isSuccessful){
-                    val id = it.result.first().id
-                    FirebaseFirestore.getInstance().collection(email)
-                        .document(id)
-                        .delete()
-                }
-            }
+            .document(email)
+            .collection(COLLECTION_ANIMES)
+            .document(id)
+            .delete()
     }
 
 }

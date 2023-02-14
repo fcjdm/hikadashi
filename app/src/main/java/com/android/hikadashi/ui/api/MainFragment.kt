@@ -24,12 +24,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         val binding = FragmentMainBinding.bind(view).apply {
             recyclerApi.adapter = adapter
-            val forYou: Button = buttonFY
-            val airing: Button = buttonAiring
-            val upcoming: Button = buttonUpcoming
-            val mostPopular: Button = buttonMostP
-            val searchView: SearchView = searchAnime
-            airing.setTextColor(Color.parseColor("#7fcae6"))
+            buttonAiring.setTextColor(Color.parseColor("#7fcae6"))
 
             viewModel.state.observe(viewLifecycleOwner) { state ->
                 progress.visibility = if(state.loading) View.VISIBLE else View.GONE
@@ -37,45 +32,45 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
                 adapter.notifyDataSetChanged()
 
-                forYou.setOnClickListener{
-                    forYou.setTextColor(Color.parseColor("#7fcae6"))
-                    airing.setTextColor(Color.parseColor("#000000"))
-                    upcoming.setTextColor(Color.parseColor("#000000"))
-                    mostPopular.setTextColor(Color.parseColor("#000000"))
+                buttonFY.setOnClickListener{
+                    buttonFY.setTextColor(Color.parseColor("#7fcae6"))
+                    buttonAiring.setTextColor(Color.parseColor("#000000"))
+                    buttonUpcoming.setTextColor(Color.parseColor("#000000"))
+                    buttonMostP.setTextColor(Color.parseColor("#000000"))
                     viewModel.changeList("foryou")
 
                 }
 
-                airing.setOnClickListener{
-                    forYou.setTextColor(Color.parseColor("#000000"))
-                    airing.setTextColor(Color.parseColor("#7fcae6"))
-                    upcoming.setTextColor(Color.parseColor("#000000"))
-                    mostPopular.setTextColor(Color.parseColor("#000000"))
+                buttonAiring.setOnClickListener{
+                    buttonFY.setTextColor(Color.parseColor("#000000"))
+                    buttonAiring.setTextColor(Color.parseColor("#7fcae6"))
+                    buttonUpcoming.setTextColor(Color.parseColor("#000000"))
+                    buttonMostP.setTextColor(Color.parseColor("#000000"))
                     viewModel.changeList("airing")
                 }
 
-                upcoming.setOnClickListener{
-                    forYou.setTextColor(Color.parseColor("#000000"))
-                    airing.setTextColor(Color.parseColor("#000000"))
-                    upcoming.setTextColor(Color.parseColor("#7fcae6"))
-                    mostPopular.setTextColor(Color.parseColor("#000000"))
+                buttonUpcoming.setOnClickListener{
+                    buttonFY.setTextColor(Color.parseColor("#000000"))
+                    buttonAiring.setTextColor(Color.parseColor("#000000"))
+                    buttonUpcoming.setTextColor(Color.parseColor("#7fcae6"))
+                    buttonMostP.setTextColor(Color.parseColor("#000000"))
                     viewModel.changeList("upcoming")
                 }
 
-                mostPopular.setOnClickListener{
-                    forYou.setTextColor(Color.parseColor("#000000"))
-                    airing.setTextColor(Color.parseColor("#000000"))
-                    upcoming.setTextColor(Color.parseColor("#000000"))
-                    mostPopular.setTextColor(Color.parseColor("#7fcae6"))
+                buttonMostP.setOnClickListener{
+                    buttonFY.setTextColor(Color.parseColor("#000000"))
+                    buttonAiring.setTextColor(Color.parseColor("#000000"))
+                    buttonUpcoming.setTextColor(Color.parseColor("#000000"))
+                    buttonMostP.setTextColor(Color.parseColor("#7fcae6"))
                     viewModel.changeList("mostpopular")
                 }
 
-                searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+                searchAnime.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
                     override fun onQueryTextSubmit(p0: String): Boolean {
-                        forYou.setTextColor(Color.parseColor("#000000"))
-                        airing.setTextColor(Color.parseColor("#000000"))
-                        upcoming.setTextColor(Color.parseColor("#000000"))
-                        mostPopular.setTextColor(Color.parseColor("#000000"))
+                        buttonFY.setTextColor(Color.parseColor("#000000"))
+                        buttonAiring.setTextColor(Color.parseColor("#000000"))
+                        buttonUpcoming.setTextColor(Color.parseColor("#000000"))
+                        buttonMostP.setTextColor(Color.parseColor("#000000"))
                         viewModel.search(p0)
                         return true
                     }

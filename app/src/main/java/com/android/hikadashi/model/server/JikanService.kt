@@ -1,5 +1,6 @@
 package com.android.hikadashi.model.server
 
+import com.android.hikadashi.dto.Anime
 import com.android.hikadashi.dto.AnimeList
 import com.android.hikadashi.dto.Data
 import retrofit2.http.GET
@@ -25,7 +26,7 @@ interface JikanService {
         @Query("sfw")sfw: Boolean): AnimeList
 
     @GET("anime/{id}/full")
-    suspend fun getAnimeFullById(@Path("id")id:String): Data
+    suspend fun getAnimeFullById(@Path("id")id:String): Anime
 
 
 }

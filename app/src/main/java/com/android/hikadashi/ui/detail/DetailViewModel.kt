@@ -24,16 +24,24 @@ class DetailMatchViewModel(anime: Data) : ViewModel() {
         }
     }
 
-    fun addAnime(){
+    fun addAnime(status: String){
         viewModelScope.launch(Dispatchers.Main) {
-            _state.value?.anime?.let { DbFirestore.addAnime(it.malId, "WATCHING") }
+            _state.value?.anime?.let { DbFirestore.addAnime(it.malId, status) }
+            _state.value = _state.value?.copy(loading = true)
             _state.value = _state.value?.copy(status = DbFirestore.getStatus(_state.value!!.anime.malId))
+            _state.value = _state.value?.copy(loading = false)
         }
     }
 
-    fun changeStatus(status: String){
-
+    fun deleteAnime(){
+        viewModelScope.launch(Dispatchers.Main) {
+            _state.value?.anime?.let { DbFirestore.deleteAnime(it.malId) }
+            _state.value = _state.value?.copy(loading = true)
+            _state.value = _state.value?.copy(status = DbFirestore.getStatus(_state.value!!.anime.malId))
+            _state.value = _state.value?.copy(loading = false)
+        }
     }
+
 
     data class UiState(
         val anime: Data,

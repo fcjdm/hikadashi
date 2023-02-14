@@ -43,19 +43,21 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonLayout"
-        android:layout_width="242dp"
-        android:layout_height="139dp"
+        android:layout_width="235dp"
+        android:layout_height="165dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toEndOf="@+id/detailImageCard"
         app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/dropDownMenu"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="208dp"
+            android:layout_height="56dp"
             android:layout_margin="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -65,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="none"
-                android:text="WATCHING"/>
+                android:text="WATCHING" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -79,10 +81,30 @@
             android:autoText="false"
             android:background="@color/white"
             android:text="ADD TO LIST"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="61dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="54dp"
+            android:layout_marginBottom="16dp"
+            android:autoText="false"
+            android:background="@color/white"
+            android:text="DELETE FROM LIST"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dropDownMenu"
+            app:layout_constraintVertical_bias="1.0" />
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/progressStatus"

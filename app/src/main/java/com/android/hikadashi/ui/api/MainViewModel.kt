@@ -25,10 +25,26 @@ class ApiViewModel() : ViewModel() {
     fun changeList(text: String){
         viewModelScope.launch(Dispatchers.Main) {
             when (text) {
-                "foryou" -> _state.value = _state.value?.copy(animes = JikanClient.service.getRecommendAnimes().data)
-                "airing" -> _state.value = _state.value?.copy(animes = JikanClient.service.getAiringAnime().data)
-                "upcoming" ->_state.value = _state.value?.copy(animes = JikanClient.service.getUpcomingAnime().data)
-                "mostpopular" ->_state.value = _state.value?.copy(animes = JikanClient.service.getTopAnimes().data)
+                "foryou" ->{
+                    _state.value = _state.value?.copy(loading = true)
+                    _state.value = _state.value?.copy(animes = JikanClient.service.getRecommendAnimes().data)
+                    _state.value = _state.value?.copy(loading = false)
+                }
+                "airing" ->{
+                    _state.value = _state.value?.copy(loading = true)
+                    _state.value = _state.value?.copy(animes = JikanClient.service.getAiringAnime().data)
+                    _state.value = _state.value?.copy(loading = false)
+                }
+                "upcoming" ->{
+                    _state.value = _state.value?.copy(loading = true)
+                    _state.value = _state.value?.copy(animes = JikanClient.service.getUpcomingAnime().data)
+                    _state.value = _state.value?.copy(loading = false)
+                }
+                "mostpopular" ->{
+                    _state.value = _state.value?.copy(loading = true)
+                    _state.value = _state.value?.copy(animes = JikanClient.service.getTopAnimes().data)
+                    _state.value = _state.value?.copy(loading = false)
+                }
 
             }
         }
