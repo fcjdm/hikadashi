@@ -77,43 +77,34 @@
             app:cardElevation="8dp">
 
             <Button
-                android:id="@+id/buttonFY"
-                android:layout_width="96dp"
-                android:layout_height="match_parent"
-                android:text="For you"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:background="@android:color/transparent"/>
-
-            <Button
                 android:id="@+id/buttonAiring"
                 android:layout_width="96dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="25dp"
+                android:background="@android:color/transparent"
                 android:text="Airing"
-                android:textSize="10sp"
                 android:textColor="@color/black"
-                android:background="@android:color/transparent"/>
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/buttonUpcoming"
                 android:layout_width="96dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="145dp"
+                android:background="@android:color/transparent"
                 android:text="Upcoming"
-                android:textSize="10sp"
                 android:textColor="@color/black"
-                android:background="@android:color/transparent"/>
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/buttonMostP"
                 android:layout_width="96dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="300dp"
+                android:layout_marginLeft="265dp"
+                android:background="@android:color/transparent"
                 android:text="Most Popular"
-                android:textSize="10sp"
                 android:textColor="@color/black"
-                android:background="@android:color/transparent"/>
+                android:textSize="10sp" />
         </androidx.cardview.widget.CardView>
 
 </FrameLayout>

@@ -32,15 +32,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
                 adapter.notifyDataSetChanged()
 
-                buttonFY.setOnClickListener{
-                    buttonFY.setTextColor(Color.parseColor("#7fcae6"))
-                    buttonAiring.setTextColor(Color.parseColor("#000000"))
-                    buttonUpcoming.setTextColor(Color.parseColor("#000000"))
-                    buttonMostP.setTextColor(Color.parseColor("#000000"))
-                    viewModel.changeList("foryou")
-
-                }
-
                 buttonAiring.setOnClickListener{
                     buttonFY.setTextColor(Color.parseColor("#000000"))
                     buttonAiring.setTextColor(Color.parseColor("#7fcae6"))
@@ -50,7 +41,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 }
 
                 buttonUpcoming.setOnClickListener{
-                    buttonFY.setTextColor(Color.parseColor("#000000"))
                     buttonAiring.setTextColor(Color.parseColor("#000000"))
                     buttonUpcoming.setTextColor(Color.parseColor("#7fcae6"))
                     buttonMostP.setTextColor(Color.parseColor("#000000"))
@@ -58,7 +48,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 }
 
                 buttonMostP.setOnClickListener{
-                    buttonFY.setTextColor(Color.parseColor("#000000"))
                     buttonAiring.setTextColor(Color.parseColor("#000000"))
                     buttonUpcoming.setTextColor(Color.parseColor("#000000"))
                     buttonMostP.setTextColor(Color.parseColor("#7fcae6"))
@@ -67,7 +56,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
                 searchAnime.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
                     override fun onQueryTextSubmit(p0: String): Boolean {
-                        buttonFY.setTextColor(Color.parseColor("#000000"))
                         buttonAiring.setTextColor(Color.parseColor("#000000"))
                         buttonUpcoming.setTextColor(Color.parseColor("#000000"))
                         buttonMostP.setTextColor(Color.parseColor("#000000"))
