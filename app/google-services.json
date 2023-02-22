@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "143974707772",
+    "project_id": "hikadashi-bdd6e",
+    "storage_bucket": "hikadashi-bdd6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143974707772:android:92e12ad0e41dd469204939",
+        "android_client_info": {
+          "package_name": "com.android.hikadashi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143974707772-o4opi1pmsdsb17i4j0u7u9u7cjfil60v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhhTl_c11a-TvmxxApcZQ6oGk8JDOjMsw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143974707772-o4opi1pmsdsb17i4j0u7u9u7cjfil60v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

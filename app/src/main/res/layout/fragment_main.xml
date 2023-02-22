@@ -4,97 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimaryVariant"
-    tools:context=".HostActivity">
+    tools:context=".HostActivity"
+    android:background="?attr/colorPrimaryVariant">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="?attr/colorPrimary">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="?attr/colorPrimary">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="337dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="28dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                <SearchView
+                    android:id="@+id/searchAnime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:queryHint="EJ: Naruto"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="138dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="16dp"
+                android:text="Hikadashi"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerApi"
+            android:requiresFadingEdge="vertical"
+            android:fadingEdgeLength="100dp"
+            android:layout_marginTop="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/view_api">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:indicatorColor="@color/white" />
 
         <androidx.cardview.widget.CardView
-            android:layout_width="337dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="28dp"
+            android:layout_width="389dp"
+            android:layout_height="43dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="15dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:cardElevation="8dp">
 
-            <SearchView
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/buttonAiring"
+                android:layout_width="96dp"
                 android:layout_height="match_parent"
-                android:background="@color/white" />
+                android:layout_marginLeft="25dp"
+                android:background="@android:color/transparent"
+                android:text="Airing"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/buttonUpcoming"
+                android:layout_width="96dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="145dp"
+                android:background="@android:color/transparent"
+                android:text="Upcoming"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/buttonMostP"
+                android:layout_width="96dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="265dp"
+                android:background="@android:color/transparent"
+                android:text="Most Popular"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
         </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="138dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="16dp"
-            android:text="Hikadashi"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerApi"
-        android:requiresFadingEdge="vertical"
-        android:fadingEdgeLength="150dp"
-        android:layout_marginTop="150dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/view_api">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="389dp"
-        android:layout_height="43dp"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="15dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="8dp">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="96dp"
-            android:layout_height="match_parent"
-            android:text="For you"
-            android:textSize="10sp" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="96dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="100dp"
-            android:text="Airing"
-            android:textSize="10sp" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="96dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="200dp"
-            android:text="Upcoming"
-            android:textSize="10sp" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="96dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="300dp"
-            android:text="Most Popular"
-            android:textSize="10sp" />
-    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

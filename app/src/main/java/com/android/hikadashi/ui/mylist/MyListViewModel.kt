@@ -1,12 +1,12 @@
-package com.android.hikadashi.ui.api
+package com.android.hikadashi.ui.mylist
 
 import androidx.lifecycle.*
 import com.android.hikadashi.dto.Data
-import com.android.hikadashi.model.server.JikanClient
+import com.android.hikadashi.model.db.DbFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ApiViewModel() : ViewModel() {
+class MyListViewModel: ViewModel() {
     private val _state = MutableLiveData(UiState())
     val state: LiveData<UiState> get() = _state
 
@@ -15,8 +15,8 @@ class ApiViewModel() : ViewModel() {
     init {
         viewModelScope.launch(Dispatchers.Main){
             _state.value = _state.value?.copy(loading = true)
-            val getTopAnimes = JikanClient.service.getAiringAnime().data
-            _state.value = _state.value?.copy(animes = getTopAnimes)
+            val getAnimesWatching = DbFirestore.getByStatus("WATCHING")
+            _state.value = _state.value?.copy(animes = getAnimesWatching)
             _state.value = _state.value?.copy(loading = false)
 
         }
@@ -25,24 +25,24 @@ class ApiViewModel() : ViewModel() {
     fun changeList(text: String){
         viewModelScope.launch(Dispatchers.Main) {
             when (text) {
-                "foryou" ->{
+                "WATCHING" -> {
                     _state.value = _state.value?.copy(loading = true)
-                    _state.value = _state.value?.copy(animes = JikanClient.service.getRecommendAnimes().data)
+                    _state.value = _state.value?.copy(animes = DbFirestore.getByStatus("WATCHING"))
                     _state.value = _state.value?.copy(loading = false)
                 }
-                "airing" ->{
+                "PLAN TO WATCH" ->{
                     _state.value = _state.value?.copy(loading = true)
-                    _state.value = _state.value?.copy(animes = JikanClient.service.getAiringAnime().data)
+                    _state.value = _state.value?.copy(animes = DbFirestore.getByStatus("PLAN TO WATCH"))
                     _state.value = _state.value?.copy(loading = false)
                 }
-                "upcoming" ->{
+                "ON HOLD" ->{
                     _state.value = _state.value?.copy(loading = true)
-                    _state.value = _state.value?.copy(animes = JikanClient.service.getUpcomingAnime().data)
+                    _state.value = _state.value?.copy(animes = DbFirestore.getByStatus("ON HOLD"))
                     _state.value = _state.value?.copy(loading = false)
                 }
-                "mostpopular" ->{
+                "DROPPED" ->{
                     _state.value = _state.value?.copy(loading = true)
-                    _state.value = _state.value?.copy(animes = JikanClient.service.getTopAnimes().data)
+                    _state.value = _state.value?.copy(animes = DbFirestore.getByStatus("DROPPED"))
                     _state.value = _state.value?.copy(loading = false)
                 }
 
@@ -50,12 +50,6 @@ class ApiViewModel() : ViewModel() {
         }
     }
 
-    fun search(name: String){
-        viewModelScope.launch(Dispatchers.Main) {
-            _state.value =
-                _state.value?.copy(animes = JikanClient.service.getSearchAnime(name, true).data)
-        }
-    }
 
     fun navigateTo(anime: Data) {
         _state.value = _state.value?.copy(navigateTo = anime)
@@ -72,8 +66,8 @@ class ApiViewModel() : ViewModel() {
     )
 }
 @Suppress("UNCHECKED_CAST")
-class ApiViewModelFactory(): ViewModelProvider.Factory{
+class MyListViewModelFactory(): ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return ApiViewModel() as T
+        return MyListViewModel() as T
     }
 }
